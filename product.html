@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product | USOA GROUP</title>
+
+    <meta name="description"
+          content="View product details, price, specifications and inquiry options at USOA GROUP.">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .product-page {
+            padding: 60px 0 90px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 30px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            text-decoration: underline;
+        }
+
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        /* GALLERY */
+
+        .gallery-main {
+            width: 100%;
+            height: 500px;
+            background: #f4f4f4;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            overflow: hidden;
+        }
+
+        .gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+        }
+
+        .gallery-thumbnails {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f5f5f5;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #777;
+        }
+
+        .thumbnail.active {
+            border: 2px solid #111;
+        }
+
+        /* DETAILS */
+
+        .product-category {
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .product-title {
+            font-size: clamp(34px, 5vw, 52px);
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .product-rating {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .product-price {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .stock {
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 20px;
+            background: #f0f0f0;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .product-description {
+            color: #555;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+
+        /* QUANTITY */
+
+        .quantity-section {
+            margin-bottom: 20px;
+        }
+
+        .quantity-section label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .quantity-control {
+            display: flex;
+            width: 150px;
+            height: 45px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            overflow: hidden;
+        }
+
+        .quantity-control button {
+            width: 45px;
+            border: 0;
+            background: #f5f5f5;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .quantity-control input {
+            width: 60px;
+            border: 0;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* ACTIONS */
+
+        .product-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .product-buttons .btn {
+            min-width: 150px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn-dark {
+            background: #111;
+            color: #fff;
+        }
+
+        .btn-light {
+            background: #fff;
+            color: #111;
+        }
+
+        /* INFO */
+
+        .product-info-box {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 9px 0;
+            border-bottom: 1px solid #eee;
+            gap: 20px;
+        }
+
+        .info-row span:first-child {
+            font-weight: 700;
+        }
+
+        .product-extra {
+            margin-top: 70px;
+        }
+
+        .product-extra h2 {
+            margin-bottom: 20px;
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .spec-table td {
+            padding: 13px;
+            border: 1px solid #ddd;
+        }
+
+        .spec-table td:first-child {
+            font-weight: 700;
+            width: 30%;
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 12px;
+            background: #f3f3f3;
+            border-radius: 7px;
+            display: none;
+        }
+
+        @media (max-width: 850px) {
+
+            .product-detail {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .gallery-main {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .gallery-main {
+                height: 320px;
+            }
+
+            .product-buttons {
+                flex-direction: column;
+            }
+
+            .product-buttons .btn {
+                width: 100%;
+            }
+
+            .info-row {
+                flex-direction: column;
+                gap: 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="container navbar">
+
+        <a href="index.html" class="logo">
+            USOA GROUP
+        </a>
+
+        <nav>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="products.html">Products</a>
+                </li>
+
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <div class="nav-actions">
+
+            <a href="login.html" class="nav-btn">
+                Login
+            </a>
+
+            <a href="cart.html" class="nav-btn">
+                Cart
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main>
+
+<section class="product-page">
+
+<div class="container">
+
+    <div class="breadcrumb">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        /
+
+        <a href="products.html">
+            Products
+        </a>
+
+        /
+
+        Product
+
+    </div>
+
+
+    <div class="product-detail">
+
+
+        <!-- LEFT: GALLERY -->
+
+        <div>
+
+            <div class="gallery-main">
+
+                <span id="imagePlaceholder">
+                    Product Image
+                </span>
+
+                <img id="mainImage"
+                     src=""
+                     alt="Product image">
+
+            </div>
+
+
+            <div class="gallery-thumbnails">
+
+                <div class="thumbnail active">
+                    Image 1
+                </div>
+
+                <div class="thumbnail">
+                    Image 2
+                </div>
+
+                <div class="thumbnail">
+                    Image 3
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT: DETAILS -->
+
+        <div>
+
+            <div class="product-category"
+                 id="productCategory">
+                Honey
+            </div>
+
+
+            <h1 class="product-title"
+                id="productName">
+                Natural Raw Honey
+            </h1>
+
+
+            <div class="product-rating">
+                ★★★★★
+                <span>
+                    Product
+                </span>
+            </div>
+
+
+            <div class="product-price"
+                 id="productPrice">
+                ₹450
+            </div>
+
+
+            <div class="stock">
+                ✓ In Stock
+            </div>
+
+
+            <p class="product-description"
+               id="productDescription">
+
+                Quality natural raw honey suitable
+                for household, retail and business use.
+
+            </p>
+
+
+            <!-- QUANTITY -->
+
+            <div class="quantity-section">
+
+                <label>
+                    Quantity
+                </label>
+
+                <div class="quantity-control">
+
+                    <button
+                        onclick="changeQuantity(-1)">
+                        −
+                    </button>
+
+                    <input
+                        id="quantity"
+                        type="number"
+                        value="1"
+                        min="1"
+                        max="100">
+
+                    <button
+                        onclick="changeQuantity(1)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="product-buttons">
+
+                <button
+                    class="btn btn-dark"
+                    onclick="addToCart()">
+                    Add to Cart
+                </button>
+
+
+                <button
+                    class="btn btn-light"
+                    onclick="buyNow()">
+                    Buy Now
+                </button>
+
+
+                <button
+                    class="btn btn-light"
+                    onclick="sendInquiry()">
+                    Send Inquiry
+                </button>
+
+            </div>
+
+
+            <div
+                id="message"
+                class="message">
+            </div>
+
+
+            <!-- PRODUCT INFO -->
+
+            <div class="product-info-box">
+
+                <div class="info-row">
+
+                    <span>
+                        SKU
+                    </span>
+
+                    <span id="productSku">
+                        HONEY001
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span>
+                        Category
+                    </span>
+
+                    <span id="productCategoryInfo">
+                        Honey
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span>
+                        Availability
+                    </span>
+
+                    <span>
+                        In Stock
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span>
+                        Shipping
+                    </span>
+
+                    <span>
+                        Available
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DESCRIPTION / SPECIFICATIONS -->
+
+    <div class="product-extra">
+
+        <h2>
+            Product Information
+        </h2>
+
+        <p id="longDescription">
+
+            This product information section will contain
+            detailed product description, usage information,
+            packaging information and other relevant details.
+
+        </p>
+
+        <br>
+
+
+        <h2>
+            Specifications
+        </h2>
+
+
+        <table class="spec-table">
+
+            <tr>
+
+                <td>
+                    Product
+                </td>
+
+                <td id="specProduct">
+                    Natural Raw Honey
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Category
+                </td>
+
+                <td id="specCategory">
+                    Honey
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    SKU
+                </td>
+
+                <td id="specSku">
+                    HONEY001
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Price
+                </td>
+
+                <td id="specPrice">
+                    ₹450
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <h3>
+                    USOA GROUP
+                </h3>
+
+                <p>
+                    Quality products and trusted service.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Company
+                </h3>
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="inquiry.html">
+                    Inquiry
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Customer
+                </h3>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="signup.html">
+                    Signup
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Legal
+                </h3>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="refund.html">
+                    Refund Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 USOA GROUP.
+            All Rights Reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/*
+    Product data
+
+    Later this will come from
+    Cloudflare D1 + Worker API.
+*/
+
+const products = {
+
+    honey001: {
+
+        name: "Natural Raw Honey",
+
+        category: "Honey",
+
+        price: 450,
+
+        sku: "HONEY001",
+
+        description:
+        "Quality natural raw honey suitable for household, retail and business use."
+
+    },
+
+    beewax001: {
+
+        name: "Bee Wax",
+
+        category: "Bee Products",
+
+        price: 500,
+
+        sku: "BEEWAX001",
+
+        description:
+        "Quality bee wax suitable for various applications."
+
+    },
+
+    hive001: {
+
+        name: "Bee Hive",
+
+        category: "Bee Products",
+
+        price: 1500,
+
+        sku: "HIVE001",
+
+        description:
+        "Quality beekeeping equipment for bee colony management."
+
+    },
+
+    extractor001: {
+
+        name: "Honey Extractor",
+
+        category: "Business Products",
+
+        price: 8000,
+
+        sku: "EXTRACTOR001",
+
+        description:
+        "Equipment designed for efficient honey extraction."
+
+    }
+
+};
+
+
+/*
+    Read product ID from URL
+*/
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const productId =
+    params.get("id") || "honey001";
+
+
+const product =
+    products[productId] || products.honey001;
+
+
+/*
+    Display product
+*/
+
+document.getElementById("productName")
+    .textContent = product.name;
+
+document.getElementById("productCategory")
+    .textContent = product.category;
+
+document.getElementById("productCategoryInfo")
+    .textContent = product.category;
+
+document.getElementById("productPrice")
+    .textContent = "₹" + product.price.toLocaleString("en-IN");
+
+document.getElementById("productDescription")
+    .textContent = product.description;
+
+document.getElementById("productSku")
+    .textContent = product.sku;
+
+document.getElementById("longDescription")
+    .textContent = product.description;
+
+document.getElementById("specProduct")
+    .textContent = product.name;
+
+document.getElementById("specCategory")
+    .textContent = product.category;
+
+document.getElementById("specSku")
+    .textContent = product.sku;
+
+document.getElementById("specPrice")
+    .textContent =
+    "₹" + product.price.toLocaleString("en-IN");
+
+
+/*
+    Quantity
+*/
+
+function changeQuantity(amount) {
+
+    const input =
+        document.getElementById("quantity");
+
+    let value =
+        parseInt(input.value) || 1;
+
+    value += amount;
+
+    if (value < 1) {
+        value = 1;
+    }
+
+    if (value > 100) {
+        value = 100;
+    }
+
+    input.value = value;
+}
+
+
+/*
+    Message
+*/
+
+function showMessage(text) {
+
+    const message =
+        document.getElementById("message");
+
+    message.textContent = text;
+
+    message.style.display = "block";
+
+    setTimeout(() => {
+
+        message.style.display = "none";
+
+    }, 3000);
+}
+
+
+/*
+    Add to Cart
+
+    Temporary frontend cart.
+
+    Later this will connect
+    to user/cart database.
+*/
+
+function addToCart() {
+
+    const quantity =
+        parseInt(
+            document.getElementById("quantity").value
+        ) || 1;
+
+
+    const cart =
+        JSON.parse(
+            localStorage.getItem("usoa_cart")
+        ) || [];
+
+
+    const existing =
+        cart.find(
+            item => item.id === productId
+        );
+
+
+    if (existing) {
+
+        existing.quantity += quantity;
+
+    } else {
+
+        cart.push({
+
+            id: productId,
+
+            name: product.name,
+
+            price: product.price,
+
+            quantity: quantity
+
+        });
+
+    }
+
+
+    localStorage.setItem(
+        "usoa_cart",
+        JSON.stringify(cart)
+    );
+
+
+    showMessage(
+        product.name +
+        " added to cart."
+    );
+
+}
+
+
+/*
+    Buy Now
+*/
+
+function buyNow() {
+
+    addToCart();
+
+    setTimeout(() => {
+
+        window.location.href =
+            "checkout.html";
+
+    }, 500);
+
+}
+
+
+/*
+    Inquiry
+*/
+
+function sendInquiry() {
+
+    window.location.href =
+        "inquiry.html?product=" +
+        encodeURIComponent(productId);
+
+}
+
+</script>
+
+</body>
+</html>
