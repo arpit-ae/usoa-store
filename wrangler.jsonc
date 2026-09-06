@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "usoa-store",
+  "pages_build_output_dir": ".",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "usoa-db",
+      "database_id": "9cd68e4e-2756-4a43-b469-78e90775940e"
+    }
+  ]
+}
