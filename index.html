@@ -1,130 +1,468 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>USOA GROUP</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>USOA GROUP | Quality Products</title>
 
     <meta name="description"
-          content="USOA GROUP - Quality products and services.">
+          content="USOA GROUP - Quality products, trusted service and business solutions.">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="stylesheet" href="css/style.css">
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f7f7;
-            color: #222;
-        }
-
-        header {
-            background: #111;
-            color: white;
-            padding: 20px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-        }
-
-        .hero {
-            min-height: 75vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .hero h1 {
-            font-size: 50px;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 20px;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 30px;
-            background: #111;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-        }
-
-        footer {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 25px;
-        }
-
-        @media (max-width: 700px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav a {
-                margin: 0 7px;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
 <header>
-    <div class="logo">USOA GROUP</div>
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/products.html">Products</a>
-        <a href="/contact.html">Contact</a>
-        <a href="/login.html">Login</a>
-    </nav>
+    <div class="container navbar">
+
+        <a href="index.html" class="logo">
+            USOA GROUP
+        </a>
+
+        <nav>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="products.html">Products</a>
+                </li>
+
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <div class="nav-actions">
+
+            <a href="login.html" class="nav-btn">
+                Login
+            </a>
+
+            <a href="cart.html" class="nav-btn">
+                Cart
+            </a>
+
+        </div>
+
+    </div>
+
 </header>
 
-<section class="hero">
-    <div>
-        <h1>Welcome to USOA GROUP</h1>
 
-        <p>
-            Quality Products. Trusted Service.
-        </p>
+<main>
 
-        <a class="btn" href="/products.html">
-            Explore Products
-        </a>
-    </div>
-</section>
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <h1>
+                    Quality Products.
+                    Trusted Service.
+                </h1>
+
+                <p>
+                    Welcome to USOA GROUP.
+                    Discover quality products for
+                    retail, wholesale and business requirements.
+                </p>
+
+                <a href="products.html"
+                   class="btn">
+                    Explore Products
+                </a>
+
+                <a href="inquiry.html"
+                   class="btn btn-outline">
+                    Send Inquiry
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+
+    <section>
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Shop by Category
+                </h2>
+
+                <p>
+                    Explore our product categories
+                </p>
+
+            </div>
+
+
+            <div class="categories">
+
+                <a href="products.html?category=honey"
+                   class="category">
+
+                    <h3>
+                        Honey & Bee Products
+                    </h3>
+
+                </a>
+
+
+                <a href="products.html?category=grocery"
+                   class="category">
+
+                    <h3>
+                        Grocery Products
+                    </h3>
+
+                </a>
+
+
+                <a href="products.html?category=business"
+                   class="category">
+
+                    <h3>
+                        Business Products
+                    </h3>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURED PRODUCTS -->
+
+    <section>
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Featured Products
+                </h2>
+
+                <p>
+                    Some of our popular products
+                </p>
+
+            </div>
+
+
+            <div class="products">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+                        Product Image
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>
+                            Natural Raw Honey
+                        </h3>
+
+                        <p>
+                            Pure quality honey
+                        </p>
+
+                        <div class="price">
+                            ₹450
+                        </div>
+
+                        <a href="product.html"
+                           class="btn">
+                            View Product
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <div class="product-image">
+                        Product Image
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>
+                            Bee Wax
+                        </h3>
+
+                        <p>
+                            Quality bee wax
+                        </p>
+
+                        <div class="price">
+                            ₹500
+                        </div>
+
+                        <a href="product.html"
+                           class="btn">
+                            View Product
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <div class="product-image">
+                        Product Image
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>
+                            Bee Hive
+                        </h3>
+
+                        <p>
+                            Quality bee equipment
+                        </p>
+
+                        <div class="price">
+                            ₹1,500
+                        </div>
+
+                        <a href="product.html"
+                           class="btn">
+                            View Product
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <div class="product-image">
+                        Product Image
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>
+                            Honey Extractor
+                        </h3>
+
+                        <p>
+                            Beekeeping equipment
+                        </p>
+
+                        <div class="price">
+                            ₹8,000
+                        </div>
+
+                        <a href="product.html"
+                           class="btn">
+                            View Product
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about">
+
+        <div class="container">
+
+            <div class="about-content">
+
+                <div class="section-title">
+
+                    <h2>
+                        About USOA GROUP
+                    </h2>
+
+                </div>
+
+                <p>
+                    USOA GROUP is focused on providing
+                    quality products and reliable services
+                    for customers, businesses and wholesale
+                    requirements.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+        <div class="container">
+
+            <h2>
+                Looking for Bulk Products?
+            </h2>
+
+            <p>
+                Contact us for wholesale and business inquiries.
+            </p>
+
+            <br>
+
+            <a href="inquiry.html"
+               class="btn">
+                Send Business Inquiry
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
 
 <footer>
-    © 2026 USOA GROUP. All Rights Reserved.
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <h3>
+                    USOA GROUP
+                </h3>
+
+                <p>
+                    Quality products and trusted service.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Company
+                </h3>
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="inquiry.html">
+                    Inquiry
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Customer
+                </h3>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="signup.html">
+                    Signup
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Legal
+                </h3>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="refund.html">
+                    Refund Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 USOA GROUP.
+            All Rights Reserved.
+
+        </div>
+
+    </div>
+
 </footer>
+
 
 </body>
 </html>
