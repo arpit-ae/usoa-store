@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products | USOA GROUP</title>
+
+    <meta name="description"
+          content="Explore products from USOA GROUP including honey, bee products, grocery and business products.">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .products-page {
+            padding: 60px 0 90px;
+        }
+
+        .products-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .products-header h1 {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .products-header p {
+            color: #666;
+        }
+
+        .product-controls {
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 240px;
+        }
+
+        .search-box input,
+        .filter select {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            font-size: 15px;
+            background: white;
+        }
+
+        .filter {
+            width: 220px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .store-product {
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .store-product:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+        }
+
+        .store-image {
+            height: 240px;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+        }
+
+        .store-info {
+            padding: 20px;
+        }
+
+        .category-label {
+            font-size: 12px;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: .7px;
+        }
+
+        .store-info h3 {
+            margin: 7px 0;
+            font-size: 20px;
+        }
+
+        .store-description {
+            color: #666;
+            font-size: 14px;
+            min-height: 44px;
+        }
+
+        .store-price {
+            font-size: 21px;
+            font-weight: 800;
+            margin: 15px 0;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .product-actions .btn {
+            flex: 1;
+            text-align: center;
+            padding: 11px 10px;
+            font-size: 13px;
+        }
+
+        .inquiry-btn {
+            background: transparent;
+            color: #111;
+        }
+
+        @media (max-width: 1000px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .products-header h1 {
+                font-size: 38px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="container navbar">
+
+        <a href="index.html" class="logo">
+            USOA GROUP
+        </a>
+
+        <nav>
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="products.html">Products</a>
+                </li>
+
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+
+            </ul>
+        </nav>
+
+        <div class="nav-actions">
+
+            <a href="login.html" class="nav-btn">
+                Login
+            </a>
+
+            <a href="cart.html" class="nav-btn">
+                Cart
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main>
+
+<section class="products-page">
+
+    <div class="container">
+
+        <div class="products-header">
+
+            <h1>Our Products</h1>
+
+            <p>
+                Explore our range of quality products.
+            </p>
+
+        </div>
+
+
+        <!-- SEARCH + FILTER -->
+
+        <div class="product-controls">
+
+            <div class="search-box">
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search products..."
+                    onkeyup="filterProducts()">
+
+            </div>
+
+
+            <div class="filter">
+
+                <select
+                    id="categoryFilter"
+                    onchange="filterProducts()">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                    <option value="honey">
+                        Honey
+                    </option>
+
+                    <option value="bee">
+                        Bee Products
+                    </option>
+
+                    <option value="grocery">
+                        Grocery
+                    </option>
+
+                    <option value="business">
+                        Business Products
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTS -->
+
+        <div
+            class="product-grid"
+            id="productGrid">
+
+
+            <!-- PRODUCT 1 -->
+
+            <article
+                class="store-product"
+                data-category="honey"
+                data-name="natural raw honey">
+
+                <div class="store-image">
+                    Product Image
+                </div>
+
+                <div class="store-info">
+
+                    <span class="category-label">
+                        Honey
+                    </span>
+
+                    <h3>
+                        Natural Raw Honey
+                    </h3>
+
+                    <p class="store-description">
+                        Quality natural raw honey.
+                    </p>
+
+                    <div class="store-price">
+                        ₹450
+                    </div>
+
+                    <div class="product-actions">
+
+                        <a
+                            href="product.html?id=honey001"
+                            class="btn">
+                            View
+                        </a>
+
+                        <a
+                            href="inquiry.html?product=honey001"
+                            class="btn inquiry-btn">
+                            Inquiry
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUCT 2 -->
+
+            <article
+                class="store-product"
+                data-category="bee"
+                data-name="bee wax">
+
+                <div class="store-image">
+                    Product Image
+                </div>
+
+                <div class="store-info">
+
+                    <span class="category-label">
+                        Bee Products
+                    </span>
+
+                    <h3>
+                        Bee Wax
+                    </h3>
+
+                    <p class="store-description">
+                        Quality bee wax for multiple uses.
+                    </p>
+
+                    <div class="store-price">
+                        ₹500
+                    </div>
+
+                    <div class="product-actions">
+
+                        <a
+                            href="product.html?id=beewax001"
+                            class="btn">
+                            View
+                        </a>
+
+                        <a
+                            href="inquiry.html?product=beewax001"
+                            class="btn inquiry-btn">
+                            Inquiry
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUCT 3 -->
+
+            <article
+                class="store-product"
+                data-category="bee"
+                data-name="bee hive">
+
+                <div class="store-image">
+                    Product Image
+                </div>
+
+                <div class="store-info">
+
+                    <span class="category-label">
+                        Bee Products
+                    </span>
+
+                    <h3>
+                        Bee Hive
+                    </h3>
+
+                    <p class="store-description">
+                        Quality beekeeping equipment.
+                    </p>
+
+                    <div class="store-price">
+                        ₹1,500
+                    </div>
+
+                    <div class="product-actions">
+
+                        <a
+                            href="product.html?id=hive001"
+                            class="btn">
+                            View
+                        </a>
+
+                        <a
+                            href="inquiry.html?product=hive001"
+                            class="btn inquiry-btn">
+                            Inquiry
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUCT 4 -->
+
+            <article
+                class="store-product"
+                data-category="business"
+                data-name="honey extractor">
+
+                <div class="store-image">
+                    Product Image
+                </div>
+
+                <div class="store-info">
+
+                    <span class="category-label">
+                        Business Products
+                    </span>
+
+                    <h3>
+                        Honey Extractor
+                    </h3>
+
+                    <p class="store-description">
+                        Equipment for honey extraction.
+                    </p>
+
+                    <div class="store-price">
+                        ₹8,000
+                    </div>
+
+                    <div class="product-actions">
+
+                        <a
+                            href="product.html?id=extractor001"
+                            class="btn">
+                            View
+                        </a>
+
+                        <a
+                            href="inquiry.html?product=extractor001"
+                            class="btn inquiry-btn">
+                            Inquiry
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <h3>
+                    USOA GROUP
+                </h3>
+
+                <p>
+                    Quality products and trusted service.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Company
+                </h3>
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="inquiry.html">
+                    Inquiry
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Customer
+                </h3>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="signup.html">
+                    Signup
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Legal
+                </h3>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="refund.html">
+                    Refund Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+            © 2026 USOA GROUP. All Rights Reserved.
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+function filterProducts() {
+
+    const search =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    const category =
+        document
+        .getElementById("categoryFilter")
+        .value;
+
+    const products =
+        document
+        .querySelectorAll(".store-product");
+
+
+    products.forEach(product => {
+
+        const name =
+            product.dataset.name;
+
+        const productCategory =
+            product.dataset.category;
+
+
+        const searchMatch =
+            name.includes(search);
+
+        const categoryMatch =
+            category === "all" ||
+            productCategory === category;
+
+
+        if (searchMatch && categoryMatch) {
+
+            product.style.display = "";
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
